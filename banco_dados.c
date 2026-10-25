@@ -20,9 +20,10 @@ void dbSalvarPassageiro(Passageiro *passageiro){
 	dbSalvarUltimoIdValido();
 }
 
-Passageiro carregarPassageiro(int passageiro){
-	//logica para carregar, deve retornar passageiro
-
+Passageiro dbCarregarPassageiro(int id){
+	
+	Passageiro passageiro = {id, "Andre", "123", "456"};
+	return passageiro;
 }
 
 void dbCarregarUltimoIdValido(){
