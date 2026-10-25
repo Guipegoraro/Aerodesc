@@ -4,47 +4,58 @@
 
 void dbSalvarUltimoIdValido();
 
-void dbSalvarPassageiro(Passageiro *passageiro) {
-	char passageiros[] = "passageiros.txt";
+void dbSalvarPassageiro(Passageiro *passageiro){
+	char nomeArquivo[64] = "";
+	snprintf(nomeArquivo, sizeof(nomeArquivo), "banco_dados/id%d.txt", passageiro->id);
 	FILE *arq;
-	arq = fopen(passageiros, "a");
-	if (arq == NULL) {
-		printf("Erro ao criar arquivo \n");
-		return;
-	}
-	fprintf(arq, "%d", passageiro->id);
-	fprintf(arq, ";%s", passageiro->nome);
-	fprintf(arq, ";%s", passageiro->cpf);
-	fprintf(arq, ";%s\n", passageiro->telefone);
+	arq = fopen(nomeArquivo,"w" );
+    if(arq == NULL){
+        printf("Erro ao criar arquivo \n");
+		return ;
+	} 	
+	fprintf(arq, "%d", passageiro -> id);
+	fprintf(arq, ";%s", passageiro -> nome);
+	fprintf(arq, ";%s", passageiro -> cpf);
+	fprintf(arq, ";%s\n", passageiro -> telefone);
 
 	fclose(arq);
 	dbSalvarUltimoIdValido();
 }
 
-Passageiro dbCarregarPassageiro(int id) {
-
-	Passageiro passageiro = {id, "Andre", "123", "456"};
+Passageiro dbCarregarPassageiro(int id){
+	Passageiro passageiro = {0};
+	char nomeArquivo[64];
+	FILE *arq;
+	snprintf(nomeArquivo, sizeof(nomeArquivo), "banco_dados/id%d.txt", id);
+	arq = fopen(nomeArquivo,"r");
+	if(arq == NULL){
+        printf("Passageiro não encontrado \n");
+		return passageiro;
+	}
+	fscanf(arq, "%d;%30[^;];%11[^;];%11[^\n]", &passageiro.id, passageiro.nome, passageiro.cpf, passageiro.telefone);	
+ 	fclose(arq);
 	return passageiro;
 }
 
-int dbCarregarTodosPassageiros(Passageiro *passageiros) {
-	int quantidade = 5;
-	passageiros = (Passageiro *)malloc(quantidade * sizeof(Passageiro));
+void dbCarregarUltimoIdValido(){
+	FILE *arq;
+	arq = fopen("banco_dados/ultimo_id.txt", "r");
+	if(arq == NULL){
+		return;
+	}
+	fscanf(arq,"%d", &ULTIMO_ID_VALIDO);
+	fclose(arq);
 
-	// test data
-	passageiros[0] = (Passageiro){1, "Maria Silva", "47991110001", "12345678901", NULL};
-	passageiros[1] = (Passageiro){2, "Joao Pereira", "47991110002", "23456789012", NULL};
-	passageiros[2] = (Passageiro){3, "Ana Souza", "47991110003", "34567890123", NULL};
-	passageiros[3] = (Passageiro){4, "Carlos Oliveira", "47991110004", "45678901234", NULL};
-	passageiros[4] = (Passageiro){5, "Beatriz Lima", "47991110005", "56789012345", NULL};
-
-	return quantidade;
 }
 
-void dbCarregarUltimoIdValido() {
-	// logica para carregar ultimo id valido
-}
-
-void dbSalvarUltimoIdValido() {
-	// logica para salvar ultimo id valido
+void dbSalvarUltimoIdValido(){
+	FILE *arq;
+	arq = fopen("banco_dados/ultimo_id.txt","w");
+	if(arq == NULL){
+		printf("Id não localizado \n");
+		return;
+		}
+	fprintf(arq,"%d\n", ULTIMO_ID_VALIDO);
+	fclose(arq);
+	
 }
