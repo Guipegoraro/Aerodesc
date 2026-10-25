@@ -24,7 +24,7 @@ typedef struct
   int id;
   char nome[NOME_TAM];
   char telefone[TELEFONE_TAM];
-  char CPF[CPF_TAM];
+  char cpf[CPF_TAM];
   Reserva *reservas;
 } Passageiro;
 
@@ -39,5 +39,7 @@ typedef struct
 } Viagem;
 
 extern int ULTIMO_ID_VALIDO;
+
+void DbSalvarPassageiro(Passageiro *passageiro);
 
 #endif
