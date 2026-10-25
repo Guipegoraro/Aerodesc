@@ -1,13 +1,15 @@
 #ifndef modelo_dados
 #define modelo_dados
 
-static const int TELEFONE_TAM = 12; //salvando string com tamanho + espaço para /0
-static const int NOME_TAM = 31;
-static const int CPF_TAM = 12;
-static const int ORIGEM_DESTINO_TAM = 31;
-static const int HORARIO_TAM = 6;
-static const int DATA_TAM = 11;
-
+enum TamanhosTipos
+{
+  NOME_TAM = 31, //salvando string com tamanho + espaço para /0
+  TELEFONE_TAM = 12,
+  CPF_TAM = 12,
+  ORIGEM_DESTINO_TAM = 31,
+  HORARIO_TAM = 6,
+  DATA_TAM = 12,
+};
 
 
 typedef struct 
