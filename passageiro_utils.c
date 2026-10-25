@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <string.h>
 
-
 Passageiro criarPassageiro() {
 	Passageiro passageiro;
 
@@ -32,7 +31,7 @@ Passageiro criarPassageiro() {
 	return passageiro;
 }
 
-int editarPassageiro(int id) {
+Passageiro editarPassageiro(int id) {
 	Passageiro passageiro = dbCarregarPassageiro(id);
 
 	printf("Preencha os dados do passageiro, ENTER mantém valor atual:\nNome [%s]: ", passageiro.nome);
@@ -58,5 +57,24 @@ int editarPassageiro(int id) {
 
 	dbSalvarPassageiro(&passageiro);
 
-	return 0;
+	return passageiro;
+}
+
+int buscarPassageiro(char *busca) { //lista passageiros que contem texto, falta terminar
+	Passageiro *passageiros;
+	int quantidade = dbCarregarTodosPassageiros(passageiros);
+	int *escolhidos;
+	int iteradorEscolhidos = 0;
+
+	for (int i = 0; quantidade - 1 < i; i++) {
+		if (strstr(passageiros[i].nome, busca)) {
+			escolhidos = realloc(escolhidos, ++iteradorEscolhidos);
+			escolhidos[iteradorEscolhidos] = i;
+		}
+	}
+
+	for (int i = 0; iteradorEscolhidos < i; i++) {
+		printf("ID: %d, Nome: %s", passageiros[escolhidos[i]].id, passageiros[escolhidos[i]].nome);
+	}
+
 }
