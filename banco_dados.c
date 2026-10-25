@@ -1,5 +1,13 @@
 #include "modelo_dados.h"
 #include <stdio.h>
+#include <errno.h>
+#ifdef _WIN32
+#include <direct.h>
+#define CRIAR_PASTA(caminho) _mkdir(caminho)
+#else
+#include <sys/stat.h>
+#define CRIAR_PASTA(caminho) mkdir(caminho, 0755)
+#endif
 
 void dbSalvarUltimoIdValido();
 
@@ -58,4 +66,11 @@ void dbSalvarUltimoIdValido(){
 	fprintf(arq,"%d\n", ULTIMO_ID_VALIDO);
 	fclose(arq);
 	
+}
+
+void dbCriarPasta(void)
+{
+    if (CRIAR_PASTA("banco_dados") != 0 && errno != EEXIST) {
+        printf("Erro ao criar a pasta banco_dados\n");
+    }
 }
