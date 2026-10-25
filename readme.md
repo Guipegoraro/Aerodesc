@@ -4,7 +4,9 @@ Guilherme Cunha Pegoraro e Tiago
 Dalpiaz Torezan
 
 Objetivo: Sistema de cadastro de passageiros, viagens e reservas em viagens.
+
 Escopo da implementação:
+
 Cadastro de passageiro
 Ver passageiro
 Ver viagens do passageiro (em “Ver passageiro”)
@@ -20,5 +22,9 @@ Relacionar passageiro a viagem
 Remover passageiro de viagem
 Menu com opções
 Finalizar programa
+
+
 Não será implementado:
 CRUD “Cadastro de aviões” (adicionaria muita complexidade nas outras rotinas)
+
+Trabalho de LPG para o segundo semestre de TADS na Udesc Joinville.
