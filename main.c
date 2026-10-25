@@ -9,7 +9,10 @@ int ULTIMO_ID_VALIDO = 0;
 
 int main(){
 	dbCarregarUltimoIdValido();
-
+	dbCriarPasta();
 	criarPassageiro();
+	dbSalvarUltimoIdValido();
+	dbCarregarPassageiro();
+
 
 }
