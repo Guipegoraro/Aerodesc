@@ -1,5 +1,4 @@
 #include "modelo_dados.h"
-#include <stdlib.h>
 
 void dbSalvarUltimoIdValido();
 
@@ -15,7 +14,7 @@ Passageiro carregarPassageiro(int passageiro){
 
 }
 
-int dbCarregarUltimoIdValido(){
+void dbCarregarUltimoIdValido(){
 	//logica para carregar ultimo id valido
 }
 

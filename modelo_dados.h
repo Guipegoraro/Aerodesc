@@ -41,5 +41,7 @@ typedef struct
 extern int ULTIMO_ID_VALIDO;
 
 void DbSalvarPassageiro(Passageiro *passageiro);
+Passageiro DbCarregarPassageiro(int id);
+void dbCarregarUltimoIdValido();
 
 #endif
