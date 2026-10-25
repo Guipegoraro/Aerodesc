@@ -3,9 +3,19 @@
 void dbSalvarUltimoIdValido();
 
 void dbSalvarPassageiro(Passageiro *passageiro){
+	char passageiros[] = "passageiros.txt";
+	FILE *arq;
+	arq = fopen(passageiros,"a" );
+    if(arq == NULL){
+        printf("Erro ao criar arquivo \n");
+		return ;
+	}
+	fprintf(arq, "%d", passageiro -> id);
+	fprintf(arq, ";%s", passageiro -> nome);
+	fprintf(arq, ";%s", passageiro -> cpf);
+	fprintf(arq, ";%s\n", passageiro -> telefone);
 
-	//logica para salvar
-
+	fclose(arq);
 	dbSalvarUltimoIdValido();
 }
 
