@@ -1,6 +1,8 @@
 #ifndef modelo_dados
 #define modelo_dados
 
+extern int ULTIMO_ID_VALIDO;
+
 enum TamanhosTipos
 {
   NOME_TAM = 31, //salvando string com tamanho + espaço para /0
@@ -38,8 +40,12 @@ typedef struct
   Passageiro *passageiros;
 } Viagem;
 
-extern int ULTIMO_ID_VALIDO;
 
-void DbSalvarPassageiro(Passageiro *passageiro);
+
+void dbSalvarPassageiro(Passageiro *passageiro);
+Passageiro dbCarregarPassageiro(int id);
+void dbCarregarUltimoIdValido();
+
+Passageiro criarPassageiro();
 
 #endif
