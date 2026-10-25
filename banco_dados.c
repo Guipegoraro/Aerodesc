@@ -1,4 +1,5 @@
 #include "modelo_dados.h"
+#include <stdio.h>
 
 void dbSalvarUltimoIdValido();
 
