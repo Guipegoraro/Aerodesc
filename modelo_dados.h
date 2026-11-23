@@ -13,7 +13,6 @@ enum TamanhosTipos
   DATA_TAM = 12,
 };
 
-
 typedef struct 
 {
   int id;
@@ -41,11 +40,14 @@ typedef struct
 } Viagem;
 
 
-
 void dbSalvarPassageiro(Passageiro *passageiro);
 Passageiro dbCarregarPassageiro(int id);
 void dbCarregarUltimoIdValido();
+int dbCarregarTodosPassageiros();
+
 
 Passageiro criarPassageiro();
+Passageiro editarPassageiro(int id);
+
 
 #endif

@@ -55,7 +55,6 @@ void dbCarregarUltimoIdValido(){
 
 }
 
-
 void dbSalvarUltimoIdValido(){
 	FILE *arq;
 	arq = fopen("banco_dados/ultimo_id.txt","w");
